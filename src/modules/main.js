@@ -8,6 +8,13 @@ import { awaitableDelay } from './utils.js';
 document.addEventListener("DOMContentLoaded", () => {
     async function init() {
         setInterval(matrixEffect, TIMINGS.MATRIX_INTERVAL);
+
+        const form = document.querySelector(SELECTORS.FORM);
+        if (form) {
+            form.reset();
+        }
+        window.scrollTo(0, 0);
+
         await awaitableDelay(TIMINGS.TEXT_ANIMATION_DELAY);
         animateText(TEXTS.GABRIEL, SELECTORS.TITLE_N, 15);
         animateText(TEXTS.FAGUNDEZ, SELECTORS.TITLE_L, 11.8);

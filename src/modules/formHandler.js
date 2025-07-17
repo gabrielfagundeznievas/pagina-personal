@@ -1,4 +1,4 @@
-import { SELECTORS, CLASS_NAMES, TEXTS, AUDIO_PATHS, TIMINGS } from './constants.js';
+import { SELECTORS, ATTRIBUTES, CLASS_NAMES, TEXTS, AUDIO_PATHS, FORM_CONFIG, TIMINGS } from './constants.js';
 import { awaitableDelay } from './utils.js';
 
 function typeMessage(message, interval, element) {
@@ -30,6 +30,12 @@ export function setupForm() {
 
     formButton.addEventListener("click", async (event) => {
         event.preventDefault();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
         form.style.display = "none";
         consoleContainer.appendChild(consoleOutput);
 
@@ -40,6 +46,8 @@ export function setupForm() {
         typeMessage(`${TEXTS.KNOCK_KNOCK}${formFields[0].value}.`, TIMINGS.TYPE_MESSAGE_INTERVAL, consoleOutput);
         await awaitableDelay(TIMINGS.SOUND_PREPARE_DELAY - TIMINGS.KNOCK_MESSAGE_DELAY);
         playKnockSound();
+
+        document[FORM_CONFIG.FORM_NAME].submit();
 
         await awaitableDelay(TIMINGS.SUBMIT_FORM_DELAY - TIMINGS.SOUND_PREPARE_DELAY);
         form.reset();
