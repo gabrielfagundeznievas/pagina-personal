@@ -27,15 +27,6 @@ export function setupForm() {
         knockSound.play();
     }
 
-    function prepareFormForSubmission() {
-        form.setAttribute(ATTRIBUTES.ACTION, FORM_CONFIG.SUBMIT_URL);
-        form.setAttribute(ATTRIBUTES.METHOD, FORM_CONFIG.METHOD);
-    }
-
-    function submitForm() {
-        document[FORM_CONFIG.FORM_NAME].submit();
-    }
-
     formButton.addEventListener("click", (event) => {
         event.preventDefault();
         form.style.display = "none";
@@ -45,7 +36,15 @@ export function setupForm() {
         setTimeout(() => typeMessage(TEXTS.THE_MATRIX_HAS_YOU, TIMINGS.TYPE_MESSAGE_INTERVAL, consoleOutput), TIMINGS.MATRIX_MESSAGE_DELAY);
         setTimeout(() => typeMessage(`${TEXTS.KNOCK_KNOCK}${formFields[0].value}.`, TIMINGS.TYPE_MESSAGE_INTERVAL, consoleOutput), TIMINGS.KNOCK_MESSAGE_DELAY);
         setTimeout(playKnockSound, TIMINGS.SOUND_PREPARE_DELAY);
-        setTimeout(prepareFormForSubmission, TIMINGS.SOUND_PREPARE_DELAY);
-        setTimeout(submitForm, TIMINGS.SUBMIT_FORM_DELAY);
+
+        // Manually redirect after the delay
+        setTimeout(() => {
+            const nextUrlInput = form.querySelector(SELECTORS.NEXT_URL_INPUT);
+            if (nextUrlInput && nextUrlInput.value) {
+                window.location.href = nextUrlInput.value;
+            } else {
+                console.error(TEXTS.NEXT_URL_ERROR);
+            }
+        }, TIMINGS.SUBMIT_FORM_DELAY);
     });
 }
