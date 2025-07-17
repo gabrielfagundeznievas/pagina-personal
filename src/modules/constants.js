@@ -12,7 +12,6 @@ export const SELECTORS = {
     TITLE_N: ".titleN",
     TITLE_L: ".titleL",
     SUBTITLE: ".subtitle",
-    NEXT_URL_INPUT: 'input[name="_next"]',
 };
 
 export const CLASS_NAMES = {
@@ -37,7 +36,6 @@ export const TEXTS = {
     GABRIEL: "gabriel",
     FAGUNDEZ: "fagundez",
     WEB_DEVELOPER: "desarrollador web",
-    NEXT_URL_ERROR: "'_next' hidden input not found or has no value.",
 };
 
 export const COLORS = {
@@ -67,6 +65,6 @@ export const TIMINGS = {
     TYPE_MESSAGE_INTERVAL: 100,
     MATRIX_MESSAGE_DELAY: 4000,
     KNOCK_MESSAGE_DELAY: 8000,
-    SOUND_PREPARE_DELAY: 9500,
-    SUBMIT_FORM_DELAY: 10000,
+    SOUND_PREPARE_DELAY: 10000,
+    SUBMIT_FORM_DELAY: 11500,
 };
