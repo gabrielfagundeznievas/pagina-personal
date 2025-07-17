@@ -16,9 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo(0, 0);
 
         await awaitableDelay(TIMINGS.TEXT_ANIMATION_DELAY);
-        animateText(TEXTS.GABRIEL, SELECTORS.TITLE_N, 15);
-        animateText(TEXTS.FAGUNDEZ, SELECTORS.TITLE_L, 11.8);
-        animateText(TEXTS.WEB_DEVELOPER, SELECTORS.SUBTITLE, 5.8);
+        animateText(TEXTS.GABRIEL, SELECTORS.TITLE_N, 11);
+        animateText(TEXTS.WEB_DEVELOPER, SELECTORS.SUBTITLE, 3);
+        animateText(TEXTS.FAGUNDEZ, SELECTORS.TITLE_L, 8);
         
         setupSmoothScrolling();
         setupScrollSpy();
